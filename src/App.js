@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import {useSelector} from 'react-redux'; //this is for reading current value of ther soter which we are created
+
 
 function App() {
+  const userList = useSelector((state) => state.users.value)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <div className="addUser">
+    <input type="text" placeholder='enter you name'/>
+    <input type="text" placeholder='enter you username...' />
+   <button>AddUser</button>
+   </div>
+   <div className="displayUsers">
+    {userList.map((user) => {
+      return <h1>{user.name}</h1>
+    })}
+   </div>
     </div>
   );
 }
